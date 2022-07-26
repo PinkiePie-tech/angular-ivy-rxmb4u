@@ -1,0 +1,23 @@
+<div>
+  <input
+    [placeholder]="placeholder"
+    type="number"
+    [formControl]="formControl"
+  />
+  <button type="submit" (click)="onSubmit()" [disabled]="!formControl.valid">
+    Tester
+  </button>
+</div>
+<div class="error">
+  <span *ngIf="formControl.errors?.required">
+    Wep faut rentrer une valeur...
+  </span>
+  <span *ngIf="formControl.errors?.min">
+    Faut être un peu plus positif,
+    {{ formControl.errors?.min.actual }} c'est pas vraiment au dessus de
+    {{ formControl.errors?.min.min }}
+  </span>
+</div>
+<div class="victory">
+  <span *ngIf="result">{{ result }}</span>
+</div>
